@@ -1,0 +1,1307 @@
+/*
+/*
+  RA - Risk Assessment App (A4 LANDSCAPE)
+  • Web + print (A4 landscape)
+  • Unified design system matching letterhead
+  • System fonts only; no external deps
+*/
+
+:root {
+  --page-w: 297mm;  /* A4 landscape width */
+  --page-h: 210mm;  /* A4 landscape height */
+  --margin: 4mm;
+  --gap: 10px;
+  
+  /* Updated color palette to match letterhead */
+  --border: 1px solid #6b7280;
+  --border-light: 1px solid #e6e6e6;
+  --soft: #f6f7f9;
+  --ink: #6b7280;           /* Match letterhead main color */
+  --muted: #787878;         /* Match letterhead muted text */
+  --brand: #6b7280;
+  --acc: #6b7280;
+  --bg-table: white;
+  --bg-header: white;
+}
+
+html, body {
+  height: 100%;
+  background: #e5e7eb;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: Arial, sans-serif;  /* Match letterhead exactly */
+  font-size: 14px;
+  line-height: 1.45;
+}
+/* ===== Global RTE (sticky, centered, matches page width) ===== */
+.ra-rte {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 305mm;
+  max-width: 305mm;
+  z-index: 999;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-bottom: 3px solid #6b7280;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+}
+
+.ra-rte .rte-btn {
+  border: 1px solid #cfcfcf;
+  background: #fff;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  min-width: 28px;
+  line-height: 1.1;
+}
+
+.ra-rte .rte-btn:hover {
+  background: #f3f4f6;
+}
+
+.ra-rte .ra-rte-sep {
+  width: 1px;
+  height: 18px;
+  background: #e5e7eb;
+  margin: 0 2px;
+}
+
+@media print {
+  .ra-rte {
+    display: none !important;
+  }
+}
+
+
+[contenteditable="true"]:focus {
+  outline: 2px solid #c7d7ff;
+  outline-offset: 2px;
+}
+/* ===== Letterhead: visually engaging, print-safe ===== */
+.letterhead{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:18px;
+  background-color: white;
+  padding:14px 20px 10px 20px;
+  margin: 0 0 20px 0;
+  border-bottom:3px solid #6b7280;
+  font-family: Arial, sans-serif;
+  color:#6b7280;
+  position: relative;
+}
+
+/* Left */
+.lh-left{ 
+  position: absolute;
+  left: 20px;
+  flex:0 0 auto; 
+  display:flex; 
+  align-items:center; 
+  gap:14px; 
+}
+.lh-logo{ height:55px; width:auto; display:block; }
+
+.lh-produced{
+  display:flex;
+  flex-direction:column;
+  line-height:1.15;
+  padding-left:14px;
+  border-left:1px solid #ddd;
+}
+.lh-muted{ font-size:10px; letter-spacing:.06em; color:#787878; font-weight:700; text-transform:uppercase; }
+.lh-strong{ font-size:13px; font-weight:700; }
+
+/* Center */
+.lh-center{
+  flex:0 1 auto;
+  min-width:0;
+  text-align:center;
+}
+.lh-clientline{
+  display:inline-flex;
+  gap:8px;
+  align-items:baseline;
+  padding:4px 10px;
+  border:1px solid #e6e6e6;
+  border-radius:999px;
+}
+.lh-client{
+  font-weight:700;
+  font-size:13px;
+  outline:none;
+}
+
+/* Main title */
+.lh-title{
+  margin-top:8px;
+  font-size:20px;
+  font-weight:800;
+  letter-spacing:.02em;
+  line-height:1.2;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  outline:none;
+}
+.lh-subtitle{
+  margin-top:3px;
+  font-size:12px;
+  opacity:.85;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  outline:none;
+}
+
+/* Right */
+.lh-right{ flex:0 0 auto; }
+.lh-chip{
+  text-align:right;
+  padding:8px 12px;
+  border:1px solid #8d8b8b;
+  border-radius:10px;
+  line-height:1.1;
+}
+.lh-chip-label{
+  font-size:10px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+.lh-chip-value{
+  margin-top:4px;
+  font-size:13px;
+  font-weight:700;
+  white-space:nowrap;
+  outline:none;
+  cursor: pointer;
+}
+
+.lh-date-input{
+  position:absolute;
+  opacity:0;
+  pointer-events:none;
+  width:1px;
+  height:1px;
+}
+
+/* =======Letterhead End======= */
+
+/* Center */
+.lh-center{
+  flex:0 1 auto;
+  min-width:0;
+  text-align:center;
+}
+
+/* Right */
+.lh-right{ 
+  position: absolute;
+  right: 20px;
+  flex:0 0 auto; 
+}
+
+/* Client Logo Section */
+.client-logo-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 0;
+  background: white;
+  margin-bottom: 0px;
+}
+
+.client-logo {
+  height: 80px;
+  width: auto;
+  display: block;
+  max-width: 90%;
+}
+
+/* Space above the hazards table */
+.table.hazardsTable {
+  padding-top: 10px !important;
+}
+
+/* Page sheet */
+.sheet {
+  width: var(--page-w);
+  min-height: var(--page-h);
+  background: #fff;
+  margin: 16px auto;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  padding: var(--margin);
+  display: grid;
+  grid-auto-rows: min-content;
+  gap: 14px;
+  overflow: visible;
+}
+
+/* Typography - matching letterhead style */
+h1, h2, h3, h4, h5 {
+  margin: 0;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+h1 {
+  font-size: 20px;
+  font-weight: 800;           /* Match letterhead title weight */
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 10px;             /* Match letterhead muted size */
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* Header */
+.doc-header {
+  border: var(--border);
+  padding: 10px 12px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* Inline editable RA number */
+.ra-number {
+  display: inline-block;
+  min-width: 120px;
+  padding: 2px 6px;
+  margin-left: 8px;
+  border-bottom: 1px solid #222;
+  font-weight: 600;
+  outline: none;
+}
+
+.ra-number:empty::before {
+  content: "Click to enter RA No.";
+  color: #777;
+  font-style: italic;
+}
+
+/* Meta grid - refined to match letterhead aesthetic */
+.meta {
+  border: var(--border);
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 0.8fr 0.8fr;
+  gap: 0;
+  background: white;
+}
+
+.meta > div {
+  border-right: var(--border);
+  padding: 8px 10px;
+}
+
+.meta > div:last-child {
+  border-right: 0;
+}
+
+.meta .label {
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.meta strong {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* Info band - lighter background */
+.band {
+  border: var(--border);
+  padding: 10px 12px;
+  background: white;
+  font-weight: 600;
+}
+
+/* Likelihood/Severity Matrix */
+.matrix-wrap {
+  border: var(--border);
+}
+
+.matrix-head {
+  padding: 8px 10px;
+  border-bottom: var(--border);
+  background: #fafafa;
+  font-weight: 700;
+}
+
+.matrix-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+.matrix-col {
+  border-right: var(--border);
+}
+
+.matrix-col:last-child {
+  border-right: 0;
+}
+
+.matrix-col h3 {
+  font-size: 14px;
+  padding: 8px 10px;
+  border-bottom: var(--border);
+  background: #fff;
+}
+
+.level {
+  padding: 10px 10px;
+  border-bottom: var(--border);
+}
+
+.level:last-child {
+  border-bottom: 0;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid #bbb;
+  margin-right: 8px;
+}
+
+/* Key */
+.key {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: var(--border);
+}
+
+.key > div {
+  padding: 8px 10px;
+  border-right: var(--border);
+}
+
+.key > div:last-child {
+  border-right: 0;
+}
+
+.key .swatch {
+  width: 0.8em;
+  height: 0.8em;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.low {
+  background: #d9f7d9;
+}
+
+.med {
+  background: #fff4cc;
+}
+
+.high {
+  background: #ffdede;
+}
+
+/* Hazards Table */
+.table {
+  width: 100%;
+}
+
+.table th,
+.table td {
+  border: var(--border);
+}
+
+.table th {
+  background: #f2f4f7;
+  text-align: center;
+  font-weight: 700;
+}
+
+.center {
+  text-align: center;
+}
+
+.w-10 {
+  width: 10%;
+}
+
+.w-12 {
+  width: 12%;
+}
+
+.w-15 {
+  width: 15%;
+}
+
+.w-20 {
+  width: 20%;
+}
+
+/* Prose */
+.prose p {
+  margin: 8px 0;
+}
+
+.prose ul {
+  margin: 6px 0 6px 18px;
+}
+
+.prose li {
+  margin: 4px 0;
+}
+
+/* Checklist */
+.checkgrid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 6px;
+  align-items: center;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.box {
+  width: 14px;
+  height: 14px;
+  border: var(--border);
+  display: inline-block;
+}
+
+.box.x {
+  background: #111;
+  position: relative;
+}
+
+.box.x::after {
+  content: "✕";
+  position: absolute;
+  inset: 0;
+  color: #fff;
+  font-size: 12px;
+  line-height: 14px;
+  text-align: center;
+}
+
+/* Signature block */
+.sig-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.sig {
+  border: var(--border);
+  padding: 8px 10px;
+  min-height: 46px;
+}
+
+.sig .label {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* Review table */
+.review {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.review th,
+.review td {
+  border: var(--border);
+  padding: 6px 8px;
+  vertical-align: top;
+}
+
+.review th {
+  background: #f2f4f7;
+  text-align: left;
+}
+
+/* Print */
+@media print {
+  /* Force A4 landscape while letting content flow across pages
+     Request zero page margins so printed content can reach document edges
+     (NOTE: some browsers/printers still impose minimum margins; users must
+     choose 'No margins' / 'Edge-to-edge' in the print dialog to remove them.) */
+  @page {
+    size: 297mm 210mm;
+    margin: 0mm;
+  }
+
+  html, body {
+    background: #fff;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    margin: 0;
+  }
+
+  /* Make the sheet occupy the printable area with minimal outer gaps */
+  .sheet {
+    width: auto;
+    min-height: auto;
+    box-shadow: none;
+    margin: 0;
+    padding: var(--margin);
+    page-break-after: always;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  /* Better page breaking */
+  table, tr, td, th {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  section, header, .matrix-wrap, .band {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
+
+/* RA toolbar (web-only) */
+.ra-toolbar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin: 8px 0 6px;
+}
+
+.btn {
+  padding: 8px 12px;
+  border: var(--border);
+  background: white;
+  border-radius: 10px;        /* Match letterhead chip radius */
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: Arial, sans-serif;
+  transition: background 0.2s;
+}
+
+.btn:hover {
+  background: #f6f7f9;
+}
+
+.btn.danger {
+  background: white;
+  border-color: #8d8b8b;
+  color: #991b1b;
+}
+
+.btn.danger:hover {
+  background: #fef2f2;
+}
+
+/* Editable placeholders */
+.editable {
+  outline: none;
+}
+
+.editable:empty::before {
+  content: "Click to edit";
+  color: #888;
+  font-style: italic;
+}
+
+.editable-meta {
+  display: inline-block;
+  padding: 2px 3px;
+  border-radius: 4px;
+}
+
+.editable-meta:focus {
+  background: rgba(14, 165, 233, 0.06);
+  outline: 1px dashed #94a3b8;
+}
+
+/* Evaluation table */
+.eval-table thead th {
+  text-align: left;
+  background: #f6fafd;
+}
+
+.eval-table td,
+.eval-table th {
+  vertical-align: top;
+}
+
+.eval-table .w-20 {
+  width: 20%;
+}
+
+.eval-wrap {
+  margin: 10px 0 12px;
+}
+
+/* Colored pill badges */
+.badge {
+  display: inline-block;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid #bbb;
+  margin-right: 8px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.badge.low {
+  background: #d9f7d9;
+  border-color: #9ad1a3;
+}
+
+.badge.med {
+  background: #fff4cc;
+  border-color: #e7c676;
+}
+
+.badge.high {
+  background: #ffdede;
+  border-color: #f0a7a7;
+}
+
+/* Align paired rows across matrix columns */
+.matrix-grid .level {
+  display: block;
+}
+
+/* Risk dropdowns (Initial/Residual) */
+#hazardsTable tbody td:nth-child(4),
+#hazardsTable tbody td:nth-child(6) {
+  text-align: center;
+}
+
+.risk-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.risk-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 1px solid #bbb;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-weight: 600;
+  background: #fff;
+  cursor: pointer;
+}
+
+.risk-select.low {
+  background: #d9f7d9;
+  border-color: #9ad1a3;
+}
+
+.risk-select.med {
+  background: #fff4cc;
+  border-color: #e7c676;
+}
+
+.risk-select.high {
+  background: #ffdede;
+  border-color: #f0a7a7;
+}
+
+@media print {
+  .risk-select {
+    display: none;
+  }
+}
+
+/* Stack selector above final value and make it smaller */
+.risk-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.risk-select {
+  font-size: 11px;
+  padding: 2px 8px;
+  line-height: 1.1;
+}
+
+/* PPE table */
+.ppe-table thead th {
+  text-align: left;
+  background: #f6fafd;
+}
+
+.ppe-table td,
+.ppe-table th {
+  vertical-align: top;
+}
+
+.ppe-checks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 20px;
+  padding: 6px 0;
+}
+
+.ppe-checks label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.ppe-checks input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+}
+
+.editable {
+  outline: none;
+}
+
+.editable:empty::before {
+  content: "Click to edit";
+  color: #888;
+  font-style: italic;
+}
+
+.editable:focus {
+  background: rgba(14, 165, 233, 0.06);
+  outline: 1px dashed #94a3b8;
+  border-radius: 4px;
+}
+
+/* COSHH table */
+.coshh-table thead th {
+  text-align: left;
+  background: #f6fafd;
+}
+
+.coshh-table td,
+.coshh-table th {
+  vertical-align: top;
+}
+
+/* COSHH row tools */
+.coshh-toolbar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin: 8px 0 6px;
+}
+
+.btn {
+  padding: 6px 10px;
+  border: 1px solid #bcbcbc;
+  background: #f7f7f7;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.btn:hover {
+  background: #efefef;
+}
+
+.btn.danger {
+  background: #ffe9e9;
+  border-color: #f1b3b3;
+}
+
+.btn.danger:hover {
+  background: #ffd9d9;
+}
+
+/* Bold first-column editable labels */
+.coshh-table tbody td:first-child .editable {
+  font-weight: 700;
+}
+
+/* Hide toolbars on print */
+@media print {
+  .coshh-toolbar {
+    display: none !important;
+  }
+}
+
+/* Editable values in sign-off grid */
+.sig-value:focus {
+  background: rgba(14, 165, 233, 0.06);
+  outline: 1px dashed #94a3b8;
+  border-radius: 4px;
+}
+
+/* Sign-off Register */
+.signreg-wrap h2 {
+  margin: 16px 0 8px;
+}
+
+.signreg-table thead th {
+  text-align: left;
+  background: #f6fafd;
+}
+
+.signreg-table td,
+.signreg-table th {
+  vertical-align: top;
+}
+
+.signreg-table .center {
+  text-align: center;
+}
+
+.sig-box {
+  min-height: 46px;
+  border: 1px dashed #cbd5e1;
+  border-radius: 4px;
+}
+
+.signreg-toolbar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin: 8px 0 6px;
+}
+
+@media print {
+  .signreg-toolbar {
+    display: none !important;
+  }
+}
+
+/* Equipment table */
+.equip-table thead th {
+  text-align: left;
+  background: #f6fafd;
+}
+
+.equip-table td,
+.equip-table th {
+  vertical-align: top;
+}
+
+.equip-wrap ol {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+/* Multi-page form layout */
+.form-page {
+  page-break-after: always;
+  break-after: page;
+  padding-bottom: 8mm;
+}
+
+.form-page:last-child {
+  page-break-after: auto;
+}
+
+.pages-toolbar, .page-toolbar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin: 40px 0 6px;
+}
+
+@media print {
+  .pages-toolbar, .page-toolbar {
+    display: none !important;
+  }
+}
+
+/* Ensure table borders render consistently */
+.table {
+  margin-top: 1px;
+}
+
+.table th, .table td {
+  border: 1px solid #bbb;
+}
+
+
+
+/* Fix hazards table column sizing */
+.hazardsTable {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.hazardsTable thead th:nth-child(4),
+.hazardsTable thead th:nth-child(6) {
+  width: 120px;
+} /* Initial & Residual risk */
+
+/* (optional) prevent long words forcing overflow */
+.hazardsTable th,
+.hazardsTable td {
+  word-break: break-word;
+}
+
+/* Print/PDF */
+@page {
+  size: A4 landscape;                /* or: size: 297mm 210mm; */
+  margin: 15mm 12mm 15mm 12mm;       /* top right bottom left */
+}
+
+@media print {
+  /* Remove any default page margins from the document itself */
+  html, body {
+    margin: 0 !important;
+    padding: 0px !important;
+  }
+
+  /* (optional) hide on-screen toolbars etc. */
+  .no-print {
+    display: none !important;
+  }
+
+  /* (optional) keep rows from splitting awkwardly */
+  tr, th, td {
+    break-inside: avoid;
+  }
+}
+
+/* screen: show a dotted line + pill label */
+.page-break {
+  position: relative;
+  margin: 16px 0;
+  border-top: 2px dotted #3b82f6;   /* blue dotted line */
+}
+
+.page-break::after {
+  content: "Page break";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -12px;
+  font: 600 12px/1.2 system-ui, sans-serif;
+  padding: 2px 8px;
+  background: #eaf2ff;              /* soft blue */
+  color: #1e40af;                    /* darker blue text */
+  border: 1px solid #93c5fd;
+  border-radius: 999px;              /* pill */
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+/* visible marker on screen */
+.page-break {
+  position: relative;
+  margin: 16px 0;
+  border-top: 2px dotted #3b82f6;
+  cursor: pointer;
+}
+
+.page-break::after {
+  content: "Page break";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -12px;
+  font: 600 12px/1.2 system-ui, sans-serif;
+  padding: 2px 8px;
+  background: #eaf2ff;
+  color: #1e40af;
+  border: 1px solid #93c5fd;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+/* print: force a new page; hide decoration */
+@media print {
+  .page-break {
+    break-after: page;               /* modern */
+    page-break-after: always;        /* legacy */
+    border: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .page-break::after {
+    content: "";
+    border: 0;
+    padding: 0;
+  }
+}
+
+@media print {
+  /* print ONLY the form pages */
+  body > *:not(#formPages) {
+    display: none !important;
+  }
+
+  #formPages {
+    display: block !important;
+    position: static !important;
+    margin: 0 !important;
+  }
+}
+
+@media print {
+  .sheet, .a4-container {
+    padding: 8mm !important;
+  }
+}
+/* ===== Letterhead: visually engaging, print-safe ===== */
+.letterhead{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  background-color: white;
+  padding:14px 20px 10px 20px;
+  margin: 0 0 20px 0;
+  border-bottom:3px solid #6b7280;
+  font-family: Arial, sans-serif;
+  color:#6b7280;
+}
+
+/* Left */
+.lh-left{ flex:0 0 auto; display:flex; align-items:center; gap:14px; }
+.lh-logo{ height:55px; width:auto; display:block; }
+
+.lh-produced{
+  display:flex;
+  flex-direction:column;
+  line-height:1.15;
+  padding-left:14px;
+  border-left:1px solid #ddd;
+}
+.lh-muted{ font-size:10px; letter-spacing:.06em; color:#787878; font-weight:700; text-transform:uppercase; }
+.lh-strong{ font-size:13px; font-weight:700; }
+
+/* Center */
+.lh-center{
+  flex:1 1 auto;
+  min-width:0;
+  text-align:center;
+}
+.lh-clientline{
+  display:inline-flex;
+  gap:8px;
+  align-items:baseline;
+  padding:4px 10px;
+  border:1px solid #e6e6e6;
+  border-radius:999px;
+}
+.lh-client{
+  font-weight:700;
+  font-size:13px;
+  outline:none;
+}
+
+/* Main title */
+.lh-title{
+  margin-top:8px;
+  font-size:20px;
+  font-weight:800;
+  letter-spacing:.02em;
+  line-height:1.2;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  outline:none;
+}
+.lh-subtitle{
+  margin-top:3px;
+  font-size:12px;
+  opacity:.85;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  outline:none;
+}
+
+/* Right */
+.lh-right{ flex:0 0 auto; }
+.lh-chip{
+  text-align:right;
+  padding:8px 12px;
+  border:1px solid #8d8b8b;
+  border-radius:10px;
+  line-height:1.1;
+}
+.lh-chip-label{
+  font-size:10px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:#787878;
+  font-weight:700;
+}
+.lh-chip-value{
+  margin-top:4px;
+  font-size:13px;
+  font-weight:700;
+  white-space:nowrap;
+  outline:none;
+  cursor: pointer;
+}
+
+.lh-date-input{
+  position:absolute;
+  opacity:0;
+  pointer-events:none;
+  width:1px;
+  height:1px;
+}
+
+/* Letterhead print styling */
+@media print {
+  .letterhead {
+    border-bottom:2px solid #6b7280;
+    margin-bottom: 12px;
+  }
+}
+
+/* Auto-save indicator */
+.save-indicator {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  background: #10b981;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.save-indicator.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media print {
+  .save-indicator {
+    display: none !important;
+  }
+}
+/* Navigation Tabs */
+/* Navigation Tabs */
+.nav-tabs {
+  position: fixed;
+  top: 62px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 305mm;  /* Match A4 portrait width */
+  max-width: 305mm;
+  z-index: 998;
+  background: white;
+  border: 1px solid #ddd;
+  border-bottom: 3px solid #6b7280;
+  display: flex;
+  gap: 0;
+  padding: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.nav-tab {
+  flex: 1;
+  padding: 12px 20px;
+  background: #f6f7f9;
+  border: none;
+  border-right: 1px solid #e5e7eb;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b7280;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: block;
+}
+
+.nav-tab:last-child {
+  border-right: none;
+}
+
+.nav-tab:hover {
+  background: #e5e7eb;
+}
+
+.nav-tab.active {
+  background: white;
+  color: #111;
+  border-bottom: 3px solid #6b7280;
+  margin-bottom: -3px;
+}
+
+@media print {
+  .nav-tabs {
+    display: none !important;
+  }
+}
+
+/* Adjust body padding to account for nav tabs */
+body {
+  padding-top: 110px !important;  /* RTE toolbar (52px) + Nav tabs (58px) */
+}
