@@ -1,0 +1,740 @@
+/* ============================================
+   STYLERA.CSS - Risk Assessment (Landscape 297mm x 210mm)
+   Requires: styles-base.css
+   ============================================ */
+
+:root {
+  --page-w: 297mm;
+  --page-h: 210mm;
+  --margin: 4mm;
+}
+
+/* ===== Page Sheet (Landscape) ===== */
+.sheet {
+  width: var(--page-w);
+  min-height: var(--page-h);
+  background: #fff;
+  margin: 16px auto;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  padding: var(--margin);
+  display: grid;
+  grid-auto-rows: min-content;
+  gap: 14px;
+  overflow: visible;
+  box-sizing: border-box;
+}
+
+/* ===== Letterhead - CENTERED LOGO & TITLE ===== */
+.letterhead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  background-color: white;
+  padding: 4px 8px;
+  margin: 0 0 20px 0;
+  border-bottom: 3px solid #6b7280;
+  font-family: Arial, sans-serif;
+  color: #6b7280;
+  position: relative;
+}
+
+.lh-left {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.lh-logo {
+  height: 55px;
+  width: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.lh-produced {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+  padding-left: 14px;
+  border-left: 1px solid #ddd;
+}
+
+.lh-muted {
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: #787878;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.lh-strong {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* CENTERED TITLE BLOCK */
+.lh-center {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.lh-clientline {
+  display: inline-flex;
+  gap: 8px;
+  align-items: baseline;
+  padding: 4px 10px;
+  border: 1px solid #e6e6e6;
+  border-radius: 999px;
+}
+
+.lh-client {
+  font-weight: 700;
+  font-size: 13px;
+  outline: none;
+}
+
+.lh-title {
+  margin-top: 8px;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  outline: none;
+  text-align: center;
+}
+
+.lh-subtitle {
+  margin-top: 3px;
+  font-size: 12px;
+  opacity: 0.85;
+  outline: none;
+  text-align: center;
+}
+
+.lh-right {
+  flex: 0 0 auto;
+}
+
+.lh-chip {
+  text-align: right;
+  padding: 8px 12px;
+  border: 1px solid #8d8b8b;
+  border-radius: 10px;
+  line-height: 1.1;
+}
+
+.lh-chip-label {
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.lh-chip-value {
+  margin-top: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  outline: none;
+  cursor: pointer;
+}
+
+/* ===== Client Logo Section ===== */
+.client-logo-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 0;
+  background: white;
+  margin-bottom: 0px;
+}
+
+.client-logo {
+  text-align: center;
+  height: 80px;
+  width: auto;
+  display: block;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+/* ===== Header ===== */
+.doc-header {
+  border: var(--border);
+  padding: 10px 12px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.ra-number {
+  display: inline-block;
+  min-width: 120px;
+  padding: 2px 6px;
+  margin-left: 8px;
+  border-bottom: 1px solid #222;
+  font-weight: 600;
+  outline: none;
+}
+
+.ra-number:empty::before {
+  content: "Click to enter RA No.";
+  color: #777;
+  font-style: italic;
+}
+
+/* ===== Meta Grid ===== */
+.meta {
+  border: var(--border);
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 0.8fr 0.8fr;
+  gap: 0;
+  background: white;
+}
+
+.meta > div {
+  border-right: var(--border);
+  padding: 8px 10px;
+}
+
+.meta > div:last-child {
+  border-right: 0;
+}
+
+.meta .label {
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.meta strong {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* ===== Info Band ===== */
+.band {
+  border: var(--border);
+  padding: 10px 12px;
+  background: white;
+  font-weight: 600;
+}
+
+/* ===== Matrix Wrap ===== */
+.matrix-wrap {
+  border: var(--border);
+}
+
+.matrix-head {
+  padding: 8px 10px;
+  border-bottom: var(--border);
+  background: #fafafa;
+  font-weight: 700;
+}
+
+.matrix-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+.matrix-col {
+  border-right: var(--border);
+}
+
+.matrix-col:last-child {
+  border-right: 0;
+}
+
+.matrix-col h3 {
+  font-size: 14px;
+  padding: 8px 10px;
+  border-bottom: var(--border);
+  background: #fff;
+}
+
+.level {
+  padding: 10px 10px;
+  border-bottom: var(--border);
+}
+
+.level:last-child {
+  border-bottom: 0;
+}
+
+/* ===== Badges ===== */
+.badge {
+  display: inline-block;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid #bbb;
+  margin-right: 8px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.badge.low,
+.low {
+  background: #d9f7d9;
+  border-color: #9ad1a3;
+}
+
+.badge.med,
+.med {
+  background: #fff4cc;
+  border-color: #e7c676;
+}
+
+.badge.high,
+.high {
+  background: #ffdede;
+  border-color: #f0a7a7;
+}
+
+/* ===== Key ===== */
+.key {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: var(--border);
+}
+
+.key > div {
+  padding: 8px 10px;
+  border-right: var(--border);
+}
+
+.key > div:last-child {
+  border-right: 0;
+}
+
+.key .swatch {
+  width: 0.8em;
+  height: 0.8em;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* ===== Tables ===== */
+.table {
+  width: 100%;
+  margin-top: 1px;
+}
+
+.table th,
+.table td {
+  border: 1px solid #bbb;
+}
+
+.table th {
+  background: #f2f4f7;
+  text-align: center;
+  font-weight: 700;
+}
+
+.center {
+  text-align: center;
+}
+
+.w-10 {
+  width: 10%;
+}
+
+.w-12 {
+  width: 12%;
+}
+
+.w-15 {
+  width: 15%;
+}
+
+.w-20 {
+  width: 20%;
+}
+
+/* ===== Hazards Table ===== */
+.hazardsTable {
+  table-layout: fixed;
+  width: 100%;
+  padding-top: 10px !important;
+}
+
+.hazardsTable thead th:nth-child(4),
+.hazardsTable thead th:nth-child(6) {
+  width: 120px;
+}
+
+.hazardsTable th,
+.hazardsTable td {
+  word-break: break-word;
+}
+
+.hazardsTable tbody td:nth-child(4),
+.hazardsTable tbody td:nth-child(6) {
+  text-align: center;
+}
+
+/* ===== Risk Dropdowns ===== */
+.risk-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.risk-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 1px solid #bbb;
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: 11px;
+  line-height: 1.1;
+  font-weight: 600;
+  background: #fff;
+  cursor: pointer;
+}
+
+.risk-select.low {
+  background: #d9f7d9;
+  border-color: #9ad1a3;
+}
+
+.risk-select.med {
+  background: #fff4cc;
+  border-color: #e7c676;
+}
+
+.risk-select.high {
+  background: #ffdede;
+  border-color: #f0a7a7;
+}
+
+/* ===== Evaluation Table ===== */
+.eval-table thead th {
+  text-align: left;
+  background: #f6fafd;
+}
+
+.eval-table td,
+.eval-table th {
+  vertical-align: top;
+}
+
+.eval-wrap {
+  margin: 10px 0 12px;
+}
+
+/* ===== PPE Table ===== */
+.ppe-table thead th {
+  text-align: left;
+  background: #f6fafd;
+}
+
+.ppe-table td,
+.ppe-table th {
+  vertical-align: top;
+}
+
+.ppe-checks {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px 20px;
+  padding: 6px 0;
+}
+
+.ppe-checks .check {
+  display: flex;
+  align-items: center;
+}
+
+.ppe-checks label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.ppe-checks input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.ppe-checks .editable {
+  outline: none;
+  padding: 2px 4px;
+  border-radius: 2px;
+}
+
+.ppe-checks .editable:hover {
+  background: #f0f0f0;
+}
+
+/* ===== Equipment Table ===== */
+.equip-table thead th {
+  text-align: left;
+  background: #f6fafd;
+}
+
+.equip-table td,
+.equip-table th {
+  vertical-align: top;
+}
+
+.equip-wrap ol {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+/* ===== COSHH Table ===== */
+.coshh-table thead th {
+  text-align: left;
+  background: #f6fafd;
+}
+
+.coshh-table td,
+.coshh-table th {
+  vertical-align: top;
+}
+
+.coshh-table tbody td:first-child .editable {
+  font-weight: 700;
+}
+
+/* ===== Sign-off Register ===== */
+.signreg-wrap h2 {
+  margin: 16px 0 8px;
+}
+
+.signreg-table thead th {
+  text-align: left;
+  background: #f6fafd;
+}
+
+.signreg-table td,
+.signreg-table th {
+  vertical-align: top;
+}
+
+.signreg-table .center {
+  text-align: center;
+}
+
+.sig-box {
+  min-height: 46px;
+  border: 1px dashed #cbd5e1;
+  border-radius: 4px;
+}
+
+/* ===== Signature Grid ===== */
+.sig-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.sig {
+  border: var(--border);
+  padding: 8px 10px;
+  min-height: 46px;
+}
+
+.sig .label {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.sig-value:focus {
+  background: rgba(14, 165, 233, 0.06);
+  outline: 1px dashed #94a3b8;
+  border-radius: 4px;
+}
+
+/* ===== Review Table ===== */
+.review {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.review th,
+.review td {
+  border: var(--border);
+  padding: 6px 8px;
+  vertical-align: top;
+}
+
+.review th {
+  background: #f2f4f7;
+  text-align: left;
+}
+
+/* ===== Toolbars (Web Only) ===== */
+.ra-toolbar,
+.coshh-toolbar,
+.signreg-toolbar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin: 8px 0 6px;
+}
+
+/* ===== Form Pages ===== */
+.form-page {
+  page-break-after: always;
+  break-after: page;
+  padding-bottom: 8mm;
+}
+
+.form-page:last-child {
+  page-break-after: auto;
+}
+
+/* ===== Editable Meta ===== */
+.editable-meta {
+  display: inline-block;
+  padding: 2px 3px;
+  border-radius: 4px;
+}
+
+.editable-meta:focus {
+  background: rgba(14, 165, 233, 0.06);
+  outline: 1px dashed #94a3b8;
+}
+
+/* ===== Save Indicator ===== */
+.save-indicator {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  background: #10b981;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.save-indicator.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== RA RTE - Landscape Width ===== */
+.ra-rte {
+  width: 297mm;
+  max-width: 297mm;
+}
+
+.tab-ra {
+  width: 297mm;
+  max-width: 297mm;
+  padding-top: 10px;
+}
+
+/* ===== LANDSCAPE SHEET ===== */
+.sheet-landscape {
+  width: 297mm;
+  max-width: 297mm;
+  min-height: 210mm;
+  margin: 20px auto;
+  padding: var(--margin);
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+/* Tab panel positioning */
+.tab-panel {
+  padding-top: 20px; /* Extra space below toolbar */
+}
+
+.tab-panel-landscape {
+  padding-top: 20px;
+}
+/* ===== CENTER THE CLIENT LOGO ===== */
+.client-logo-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  background: white;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.client-logo {
+  display: block;
+  margin: 0 auto;
+  height: 80px;
+  width: auto;
+  max-width: 90%;
+}
+
+/* ===== CLEAN UP DATE PICKER - REMOVE BOX & ICON ===== */
+.lh-chip {
+  text-align: right;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  line-height: 1.1;
+  background: transparent;
+}
+
+.lh-chip-value {
+  margin-top: 0;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+/* Hide the calendar icon input */
+.lh-date-input {
+  display: none !important;
+}
+
+/* Style the clickable date text */
+.lh-chip-value:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
